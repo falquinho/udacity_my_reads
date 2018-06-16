@@ -24,7 +24,9 @@ export class ElementBookThumb extends Component {
 
 
     render() {
-        const cover_url = 'url('+ this.props.book.imageLinks.thumbnail +')'
+        // Make a copy to make code cleaner
+        const book = this.props.book
+        const cover_url = 'url('+ book.imageLinks.thumbnail +')'
 
         return (
             <div className="book">
@@ -34,9 +36,9 @@ export class ElementBookThumb extends Component {
                     <div className="book-shelf-changer">
                     <select onChange={ event => this.onSelectChange(event) }>
                         <option value="move" disabled>Move to...</option>
-                        <option value="currentlyReading">Currently Reading</option>
-                        <option value="wantToRead">Want to Read</option>
-                        <option value="read">Read</option>
+                        <option value="currentlyReading" disabled={(book.shelf === 'currentlyReading')}>Currently Reading</option>
+                        <option value="wantToRead"       disabled={(book.shelf === 'wantToRead')}>Want to Read</option>
+                        <option value="read"             disabled={(book.shelf === 'read')}>Read</option>
                     </select>
                     </div>
                 </div>
