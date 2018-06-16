@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { search } from './BooksAPI'
 import { ElementBookThumb } from './ElementBookThumb'
+import { ElementQueryEmptyWarning } from './ElementQueryEmptyWarning'
 import './App.js'
 
 
@@ -76,7 +77,7 @@ export class PageSearch extends Component {
                     {this.state.query_result.length? (
                         <ol className="books-grid">{ book_list }</ol>
                     ):(
-                        <p>Nothing to see here.</p>
+                        <ElementQueryEmptyWarning/>
                     )}
                 </div>
             </div>)
